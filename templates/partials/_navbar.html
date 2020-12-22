@@ -1,0 +1,32 @@
+{% load static %}
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" id="home-navbar">
+    <a href="{% url 'results:index' %}" class="navbar-brand">
+        <img src="{% static 'img/favicon.jpg' %}" alt="favicon" class="rounded-circle" width="50" height="50">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav grid-navbar">
+            <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                <a href="{% url 'results:index' %}" class="nav-link">
+                    <i class="fas fa-home"></i> Home
+                </a>
+            </li>
+            <li {% if 'pu-results' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                <a href="{% url 'results:pu-results' %}" class="nav-link">
+                    <i class="fas fa-newspaper"></i> Polling Unit Results
+                </a>
+            </li>
+            <li {% if 'lga-results' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                <a href="{% url 'results:lga-results' %}" class="nav-link">
+                    <i class="fas fa-newspaper"></i> LGA Results
+                </a>
+            </li>        
+        </ul>
+    </div>
+</nav>

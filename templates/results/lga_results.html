@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-5">
+        {% for result in results  %}
+            <div class="card">
+                <div class="card-header">                    
+                    <h3 class="text-center">{{ result.party_abbr }}</h3>
+                </div>
+                <div class="card-body">                    
+                    <p class="text-center font-weight-bolder">
+                        LGA: <a href="{{ result.get_absolute_url }}">{{ result.lga_name }}</a>                
+                    </p>
+                    <p class="text-center font-weight-bolder">
+                        Score: {{ result.party_score }}            
+                    </p>
+                </div>
+                <div class="card-footer">                    
+                    <p>
+                        endorsed by: {{ result.lga_results.pu_lags.pu_results.total_result }}
+                    </p>
+                </div>
+            </div>            
+        {% endfor %}        
+    </div>
+{% endblock %}
